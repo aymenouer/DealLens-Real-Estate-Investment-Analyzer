@@ -1,5 +1,6 @@
 package com.deallens.property;
 
+import com.deallens.model.Property;
 import com.deallens.property.dto.YieldResponse;
 import jakarta.websocket.server.PathParam;
 import org.springframework.http.ResponseEntity;
@@ -42,12 +43,5 @@ public class PropertyController {
                         .orElseGet(propertyService::getAllProperties)
         );
     }
-
-    @GetMapping("/{id}/yield")
-    public ResponseEntity<YieldResponse> getPropertiesYield(@PathVariable Integer id) {
-        return propertyService.getPropertyYield(id).map(ResponseEntity::ok)
-                .orElseGet(() -> ResponseEntity.notFound().build());
-    }
-
 
 }
