@@ -1,6 +1,7 @@
 package com.deallens.property;
 
 
+import com.deallens.model.Property;
 import com.deallens.property.dto.YieldResponse;
 import org.springframework.stereotype.Service;
 
@@ -14,8 +15,9 @@ public class PropertyService {
 
     public PropertyService() {
         properties =  List.of(
-                new Property(1,"Hamburg",200000,750,200,500),
-                new Property(2,"Hamburg",230000,650,100,600)
+                // id, address, city, squareMeters, purchasePrice, allocableCosts, nonAllocableCosts
+                new Property(1, "Musterstraße 1", "Hamburg", 75, 200000, 200, 50),
+                new Property(2, "Beispielweg 12", "Hamburg", 65, 230000, 100, 60)
         );
     }
 
@@ -38,19 +40,9 @@ public class PropertyService {
 
     public List<Property> getPropertiesWithinMaxPrice(double maxPrice) {
         return properties.stream()
-                .filter(property -> property.price() <= maxPrice)
+                .filter(property -> property.purchasePrice() <= maxPrice)
                 .toList();
     }
-
-    public Optional<YieldResponse>  getPropertyYield(Integer id) {
-        return getPropertyById(id)
-                .map(property ->
-                        new YieldResponse(id,property.grossYield(),property.netYield())
-                );
-    }
-
-
-
 
 
 }

@@ -1,5 +1,6 @@
 package com.deallens.property;
 
+import com.deallens.model.Property;
 import com.deallens.property.dto.YieldResponse;
 import org.junit.jupiter.api.Test;
 
@@ -70,30 +71,5 @@ public class PropertyServiceTest {
                 .getPropertiesWithinMaxPrice(230000)
                 .size());
     }
-
-    @Test
-    void shouldReturnPropertyYieldWhenPropertyExists() {
-        Property property = propertyService.getPropertyById(1).orElseThrow();
-
-        YieldResponse expected = new YieldResponse(
-                1,
-                property.grossYield(),
-                property.netYield()
-        );
-        assertTrue(propertyService
-                .getPropertyYield(1)
-                .isPresent());
-        assertEquals(expected, propertyService
-                .getPropertyYield(1)
-                .orElseThrow());
-    }
-
-    @Test
-    void shouldReturnEmptyYieldWhenPropertyDoesNotExist() {
-        assertTrue(propertyService
-                .getPropertyYield(999)
-                .isEmpty());
-    }
-
 
 }
