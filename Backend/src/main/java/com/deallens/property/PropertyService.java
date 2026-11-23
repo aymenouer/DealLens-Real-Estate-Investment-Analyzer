@@ -2,7 +2,6 @@ package com.deallens.property;
 
 
 import com.deallens.model.Property;
-import com.deallens.property.dto.YieldResponse;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
