@@ -1,7 +1,6 @@
 package com.deallens.property;
 
 import com.deallens.model.Property;
-import com.deallens.property.dto.YieldResponse;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
